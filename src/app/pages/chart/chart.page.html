@@ -1,0 +1,89 @@
+<ion-content class="ion-padding">
+  <div class="chart-container">
+    <div class="selector-section">
+      <ion-card>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <ion-item lines="none">
+                  <ion-label position="stacked">Z</ion-label>
+                  <ion-select
+                    [(ngModel)]="fromCurrency"
+                    (ionChange)="onCurrencyChange()"
+                    interface="popover"
+                  >
+                    <ion-select-option *ngFor="let currency of currencies" [value]="currency.code">
+                      {{ currency.flag }} {{ currency.code }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item lines="none">
+                  <ion-label position="stacked">Na</ion-label>
+                  <ion-select
+                    [(ngModel)]="toCurrency"
+                    (ionChange)="onCurrencyChange()"
+                    interface="popover"
+                  >
+                    <ion-select-option *ngFor="let currency of currencies" [value]="currency.code">
+                      {{ currency.flag }} {{ currency.code }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="period-section">
+      <ion-segment [(ngModel)]="timePeriod" (ionChange)="onPeriodChange()">
+        <ion-segment-button value="7">
+          <ion-label>7 dní</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="30">
+          <ion-label>30 dní</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="canvas-section">
+      <ion-card>
+        <ion-card-content>
+          <div class="chart-wrapper">
+            <canvas #chartCanvas></canvas>
+          </div>
+          <div class="loading-spinner" *ngIf="isLoading">
+            <ion-spinner name="crescent"></ion-spinner>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="stats-section" *ngIf="!isLoading && minRate > 0">
+      <ion-card>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4" class="stat-col">
+                <div class="stat-label">Min</div>
+                <div class="stat-value">{{ minRate | number:'1.4-4' }}</div>
+              </ion-col>
+              <ion-col size="4" class="stat-col">
+                <div class="stat-label">Průměr</div>
+                <div class="stat-value">{{ avgRate | number:'1.4-4' }}</div>
+              </ion-col>
+              <ion-col size="4" class="stat-col">
+                <div class="stat-label">Max</div>
+                <div class="stat-value">{{ maxRate | number:'1.4-4' }}</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

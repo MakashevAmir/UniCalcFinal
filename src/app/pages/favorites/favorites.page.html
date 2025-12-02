@@ -1,0 +1,36 @@
+<ion-content>
+  <ion-list *ngIf="favorites.length > 0">
+    <ion-item-sliding *ngFor="let favorite of favorites" #slidingItem>
+      <ion-item button (click)="openConverter(favorite.fromCurrency, favorite.toCurrency)">
+        <div class="favorite-content">
+          <div class="currency-pair">
+            <h2>{{ favorite.fromCurrency }} → {{ favorite.toCurrency }}</h2>
+            <p class="added-time">{{ getTimeSinceAdded(favorite.addedAt) }}</p>
+          </div>
+          <div class="rate-info">
+            <div class="current-rate" *ngIf="!favorite.isLoading">
+              {{ favorite.currentRate | number:'1.4-4' }}
+            </div>
+            <ion-spinner *ngIf="favorite.isLoading" name="dots"></ion-spinner>
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="removeFavorite(favorite.id, slidingItem)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div class="empty-state" *ngIf="favorites.length === 0">
+    <ion-icon name="star-outline"></ion-icon>
+    <h2>Zatím žádné oblíbené páry</h2>
+    <p>Přidejte měnové páry do oblíbených ze stránky převodníku</p>
+    <ion-button routerLink="/tabs/converter" fill="outline">
+      Přejít na převodník
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

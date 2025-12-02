@@ -1,1 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
+ion-header {
+  flex-shrink: 0;
+  z-index: 10;
+
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    --min-height: 44px;
+  }
+}
+
+ion-tabs {
+  flex: 1;
+  overflow: hidden;
+
+  ion-content {
+    --padding-top: 20px;
+  }
+}

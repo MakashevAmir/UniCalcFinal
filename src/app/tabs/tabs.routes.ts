@@ -7,30 +7,35 @@ export const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'converter',
         loadComponent: () =>
-          import('../tab1/tab1.page').then((m) => m.Tab1Page),
+          import('../pages/converter/converter.page').then((m) => m.ConverterPage),
       },
       {
-        path: 'tab2',
+        path: 'rates',
         loadComponent: () =>
-          import('../tab2/tab2.page').then((m) => m.Tab2Page),
+          import('../pages/rates/rates.page').then((m) => m.RatesPage),
       },
       {
-        path: 'tab3',
+        path: 'chart',
         loadComponent: () =>
-          import('../tab3/tab3.page').then((m) => m.Tab3Page),
+          import('../pages/chart/chart.page').then((m) => m.ChartPage),
+      },
+      {
+        path: 'favorites',
+        loadComponent: () =>
+          import('../pages/favorites/favorites.page').then((m) => m.FavoritesPage),
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/converter',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/converter',
     pathMatch: 'full',
   },
 ];

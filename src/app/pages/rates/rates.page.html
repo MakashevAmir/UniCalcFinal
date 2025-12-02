@@ -1,0 +1,46 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Potáhněte pro obnovení"
+      refreshingSpinner="circles"
+      refreshingText="Obnovování..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="update-time" *ngIf="lastUpdate">
+    <ion-note>Naposledy aktualizováno: {{ lastUpdate | date:'short' }}</ion-note>
+  </div>
+
+  <div *ngIf="isLoading" class="skeleton-container">
+    <ion-item *ngFor="let item of [1,2,3,4,5,6,7,8]">
+      <ion-skeleton-text animated style="width: 40px; height: 40px; border-radius: 8px;"></ion-skeleton-text>
+      <ion-label>
+        <h3><ion-skeleton-text animated style="width: 80px;"></ion-skeleton-text></h3>
+        <p><ion-skeleton-text animated style="width: 150px;"></ion-skeleton-text></p>
+      </ion-label>
+      <ion-skeleton-text slot="end" animated style="width: 100px;"></ion-skeleton-text>
+    </ion-item>
+  </div>
+
+  <ion-list *ngIf="!isLoading">
+    <ion-item *ngFor="let rate of filteredRates" lines="full">
+      <div class="currency-flag" slot="start">
+        {{ rate.flag }}
+      </div>
+      <ion-label>
+        <h2>{{ rate.code }}</h2>
+        <p>{{ rate.name }}</p>
+      </ion-label>
+      <div slot="end" class="rate-value">
+        <strong>{{ rate.rate | number:'1.4-4' }}</strong>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <div class="empty-state" *ngIf="!isLoading && filteredRates.length === 0">
+    <ion-icon name="search-outline"></ion-icon>
+    <h2>Žádné měny nenalezeny</h2>
+    <p>Zkuste hledat s jiným výrazem</p>
+  </div>
+</ion-content>

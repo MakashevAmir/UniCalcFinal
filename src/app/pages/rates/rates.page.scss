@@ -1,0 +1,83 @@
+.update-time {
+  padding: 8px 16px;
+  text-align: center;
+  background: var(--ion-color-light);
+
+  ion-note {
+    font-size: 0.85rem;
+  }
+}
+
+.skeleton-container {
+  padding: 8px 0;
+}
+
+ion-list {
+  padding: 0;
+
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-end: 0;
+
+    &:hover {
+      --background: var(--ion-color-light);
+    }
+
+    .currency-flag {
+      font-size: 2rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+
+    ion-label {
+      h2 {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: var(--ion-color-medium);
+      }
+    }
+
+    .rate-value {
+      text-align: right;
+      font-size: 1.1rem;
+      color: var(--ion-color-primary);
+    }
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 32px;
+  text-align: center;
+
+  ion-icon {
+    font-size: 80px;
+    color: var(--ion-color-medium);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ion-color-dark);
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--ion-color-medium);
+  }
+}
