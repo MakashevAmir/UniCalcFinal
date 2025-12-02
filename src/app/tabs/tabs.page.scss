@@ -1,12 +1,15 @@
 :host {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 ion-header {
-  flex-shrink: 0;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
   ion-toolbar {
     --background: var(--ion-color-primary);
@@ -17,9 +20,5 @@ ion-header {
 
 ion-tabs {
   flex: 1;
-  overflow: hidden;
-
-  ion-content {
-    --padding-top: 20px;
-  }
+  min-height: 0;
 }
