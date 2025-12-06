@@ -1,8 +1,5 @@
-ion-content {
-  --padding-top: calc(120px + var(--ion-safe-area-top));
-}
-
 .update-time {
+  margin-top: 16px;
   padding: 8px 16px;
   text-align: center;
   background: var(--ion-color-light);
@@ -13,11 +10,11 @@ ion-content {
 }
 
 .skeleton-container {
-  padding: 8px 0;
+  padding: 16px 0 8px 0;
 }
 
 ion-list {
-  padding: 0;
+  padding: 16px 0 0 0;
 
   ion-item {
     --padding-start: 16px;

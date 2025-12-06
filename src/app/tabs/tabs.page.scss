@@ -1,24 +1,20 @@
-:host {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 ion-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-
   ion-toolbar {
     --background: var(--ion-color-primary);
     --color: var(--ion-color-primary-contrast);
-    --min-height: 44px;
+    --min-height: 56px;
+  }
+
+  .rates-toolbar {
+    --background: var(--ion-color-light);
+    --color: var(--ion-text-color);
+
+    ion-item {
+      --background: transparent;
+    }
   }
 }
 
 ion-tabs {
-  flex: 1;
-  min-height: 0;
+  height: 100%;
 }
